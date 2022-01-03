@@ -1,5 +1,3 @@
 # Personal Portfolio
 
-Attempting to create a blog post page for a friend where he can post football related thoughts.
-
-This attempt was entirely front end, testing ideas in HTML.
+Creating a personal portfolio static website to present what I am working on currently and projects I have completed.
