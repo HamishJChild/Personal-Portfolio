@@ -153,17 +153,7 @@ main {
   padding: 4em 1em;
 }
 
-header {
-  background-color: #333333;
-  background-image: url("images/carwash_terrace.png");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  line-height: 1.2;
-  max-width: none;
-  padding: 10vw 2em;
-  text-align: center;
-}
+
 
 #logo {
   display: inline-block;
@@ -172,25 +162,6 @@ header {
   width: 120px;
 }
 
-header h1 {
-  color: white;
-  font-size: 2.5em;
-  font-weight: 300;
-}
-
-header a {
-  background: #e81c4f;
-  border: 1px solid #e81c4f;
-  border-radius: 290486px;
-  color: white;
-  font-size: 0.6em;
-  letter-spacing: 0.2em;
-  padding: 1em 2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: none 200ms ease-out;
-  transition-property: color, background;
-}
 
 
 /* Classes */
