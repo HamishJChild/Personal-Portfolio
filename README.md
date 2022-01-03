@@ -1,4 +1,4 @@
-# hjcpersonalportfolio.github.io
+# Personal Portfolio
 
 Attempting to create a blog post page for a friend where he can post football related thoughts.
 
