@@ -1,23 +1,31 @@
 function makeList(listData) {
-    // Make a container element for the list
-    let listContainer = document.createElement('div'),
-    // Make the list
-    listElement = document.createElement('ul'),
+    // Get a container element for the list
+    let listContainer = document.getElementById("github-projects"),
+    // Get the list
+    listElement = document.getElementById("proj-list"),
     // Set up a loop that goes through the items in listItems one at a time
     numberOfListItems = listData.length,
     listItem,
+    urlItem,
+    link,
     i;
-
-    // Add it to the page
-    document.getElementsByTagName('body')[0].appendChild(listContainer);
-    listContainer.appendChild(listElement);
 
     for (i = 0; i < numberOfListItems; ++i) {
         // create an item for each one
         listItem = document.createElement('li');
+        urlItem = document.createElement('a');
+        link = document.createTextNode(listData[i].name);
+
+        urlItem.appendChild(link);
+
+        // Set the title.
+        urlItem.title = listData[i].name;
+
+        // Set the href property.
+        urlItem.href = listData[i].html_url;
 
         // Add the item text
-        listItem.innerHTML = listData[i].name;
+        listItem.appendChild(urlItem);
 
         // Add listItem to the listElement
         listElement.appendChild(listItem);

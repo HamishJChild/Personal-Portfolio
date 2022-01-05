@@ -43,3 +43,10 @@ font-family: "Courier New", monospace;
   height: 500px;
 }
 
+.navbar-inner{
+    text-align: center;
+    margin: auto;
+}
+.navbar{
+    position: sticky;
+}
