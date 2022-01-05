@@ -1,14 +1,9 @@
 /*Font*/
 body {
-  font-family:  "Courier New", monospace;
-  background: #bababa;
+font-family:  "Courier New", monospace;
+background: #bababa;
 }
 
-@media (min-width: 600px) {
-  .column {
-    width: 50%;
-  }
-}
 
 /* Colours
 Midnight Blue
@@ -63,4 +58,18 @@ background: white;}
   float: left;
   width: 50%;
   padding: 5px;
+}
+
+
+div {
+font-size: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+  .div {
+  font-size: 50%}
+  .body {
+  overflow-y: scroll;
+  white-space: nowrap;}
 }
