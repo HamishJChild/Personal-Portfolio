@@ -1,6 +1,7 @@
 /*Font*/
 body {
   font-family:  "Courier New", monospace;
+  background: #bababa;
 }
 
 /* Colours
@@ -37,11 +38,10 @@ h3 {
 font-family: "Courier New", monospace;
 }
 
-/* Horizontal line */
-.vl {
-  border-left: 6px;
-  height: 500px;
-}
+hr {
+margin:auto;
+width:15%;
+background: white;}
 
 .navbar-inner{
     text-align: center;
@@ -49,4 +49,12 @@ font-family: "Courier New", monospace;
 }
 .navbar{
     position: sticky;
+    font-size: x-large;
+    border: solid white;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
 }
