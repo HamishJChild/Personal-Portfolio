@@ -6,6 +6,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<script src="/scripts/github.js" type="text/javascript"></script>-->
+    <script>
+        function makeList(listData) {
+            // Get a container element for the list
+            let listContainer = document.getElementById("github-projects"),
+            // Get the list
+            listElement = document.getElementById("proj-list"),
+            // Set up a loop that goes through the items in listItems one at a time
+            numberOfListItems = listData.length,
+            listItem,
+            urlItem,
+            link,
+            i;
+
+            for (i = 0; i < numberOfListItems; ++i) {
+                // create an item for each one
+                listItem = document.createElement('li');
+                urlItem = document.createElement('a');
+                link = document.createTextNode(listData[i].name);
+
+                urlItem.appendChild(link);
+
+                // Set the title.
+                urlItem.title = listData[i].name;
+
+                // Set the href property.
+                urlItem.href = listData[i].html_url;
+
+                // Add the item text
+                listItem.appendChild(urlItem);
+
+                // Add listItem to the listElement
+                listElement.appendChild(listItem);
+            }
+        }
+
+        function dumpResponse() {
+            makeList(JSON.parse(this.responseText))
+        }
+        function getProject() {
+            var request = new XMLHttpRequest();
+            request.onload = dumpResponse;
+            request.open('get', 'https://api.github.com/users/HamishJChild/repos', true)
+            request.send()
+        }
+
+    </script>
+
+
+
     <title>Hamish Child</title>
 </head>
 <body>
@@ -14,19 +66,67 @@
     <div class="header">
         <h1>Hamish Child</h1>
         <h2>Personal Portfolio</h2>
-        <hr style="margin:auto; width:10%;">
+        <hr>
+    </div>
+
+    <!-- Nav Bar -->
+    <div id="navbar" class="navbar navbar-top" role="navigation">
+        <div class="navbar-inner">
+            <a class="nav-item mx-5" href="#personal-statement">Home</a> |
+            <a class="nav-item mx-5" href="#projects">Projects</a> |
+            <a class="nav-item mx-5" href="#cv">CV</a> |
+            <a class="nav-item mx-5" href="#contact">Contact</a>
+        </div>
     </div>
 
 
+    <!-- Personal Statement-->
+    <section id="personal-statement" style="width: 50%; text-align:center; margin: auto;">
+        <h3>Personal Statement</h3>
+        <p>
+            A Technical Consultant with a strong aptitude in software development, modelling complex business and technical systems and solving problems individually and with others.
+            I am passionate about building testable and stable software solutions to meet client’s needs and I have experience that demonstrates this.
+            I am looking to build my skillset as a developer and grow as part of a team, to move towards the goal of taking on more responsibility in leading projects.
+        </p>
+    </section>
+
+    <hr>
+    <br>
+    <!-- Projects Section -->
+    <section id="projects" style="width: 15%; text-align:center; margin: auto;">
+        <div id="github-projects">
+            <h3>Projects</h3>
+            <ul id="proj-list">
+                <script type="text/javascript">getProject();</script>
+            </ul>
+        </div>
+    </section>
+
+    <!--CV-->
+    <hr>
+    <br>
+    <section id="cv" style="width: 80%; text-align:center; margin: auto;">
+        <h3>CV</h3>
+        <div class="row">
+            <div class="column">
+                <img src="images/Hamish_Child_CV_2022-pages-1.png" alt="Hamish Child CV 2022 Page 1" style="width: 100%">
+            </div>
+            <div class="column">
+                <img src="images/Hamish_Child_CV_2022-pages-2.png" alt="Hamish Child CV 2022 Page 2" style="width: 100%">
+            </div>
+        </div>
+        </section>
+
     <!-- Footer -->
-    <footer class="w3-container w3-padding-64 w3-center w3-white w3-xlarge">
-      <a href="https://github.com/HamishJChild" target="_blank"><i class="fa fa-github" ></i></a>
-      <a href="https://www.linkedin.com/in/hamish-c-32889b81/" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <footer id="contact" class="w3-container w3-padding-64 w3-center w3-xlarge" >
+        <div>
+            <a href="https://github.com/HamishJChild" target="_blank" style="font-size: xxx-large"><i class="fa fa-github" ></i></a>
+            <a href="https://www.linkedin.com/in/hamish-c-32889b81/" target="_blank" style="font-size: xxx-large"><i class="fa fa-linkedin"></i></a>
+        </div>
     </footer>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 </body>
+
+
+
 </html>
