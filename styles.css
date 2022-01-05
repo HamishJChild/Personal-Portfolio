@@ -4,6 +4,12 @@ body {
   background: #bababa;
 }
 
+@media (min-width: 600px) {
+  .column {
+    width: 50%;
+  }
+}
+
 /* Colours
 Midnight Blue
 #145DA0
