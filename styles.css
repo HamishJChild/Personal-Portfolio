@@ -65,11 +65,17 @@ div {
 font-size: 100%;
 }
 
+section {
+width: 50%;
+text-align:center;
+margin: auto;
+}
+
 
 @media screen and (max-width: 600px) {
-  .div {
-  font-size: 50%}
-  .body {
-  overflow-y: scroll;
-  white-space: nowrap;}
+  section {
+  width: 100%;
+  padding: 20px;}
+  .header {
+  padding:20px;}
 }
