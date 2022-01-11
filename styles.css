@@ -1,10 +1,3 @@
-/*Font*/
-body {
-font-family:  "Courier New", monospace;
-background: #bababa;
-}
-
-
 /* Colours
 Midnight Blue
 #145DA0
@@ -24,13 +17,27 @@ Baby Blue
 --rajah: #ffa552ff;
 --peach: #fcde9cff;
 --lavender-web: #e9e6ffff;
+
 */
+
+:root {
+--main-colour: #2b6777;
+--beau-blue: #c8d8e4;
+--white: #ffffff;
+--cultured: #f2f2f2;
+--second: #52ab98;
+}
+
+body {
+font-family:  "Courier New", monospace;
+background: var(--white);
+}
 
 /* Header/Logo Title */
 .header {
-  padding: 120px;
+  padding: 80px;
   text-align: center;
-  background: #2E8BC0;
+  background: var(--main-colour);
   color: white;
   font-size: 30px;
   font-family: "Courier New", monospace;
@@ -49,7 +56,12 @@ font-family: "Courier New", monospace;
 hr {
 margin:auto;
 width:15%;
-background: white;}
+background-color: var(--second);
+border: none;}
+
+hr:not([size]) {
+    height: 3px;
+}
 
 .navbar-inner{
     text-align: center;
@@ -58,7 +70,7 @@ background: white;}
 .navbar{
     position: sticky;
     font-size: x-large;
-    border: solid white;
+    border: solid var(--main-colour);
 }
 
 .column {
@@ -67,6 +79,8 @@ background: white;}
   padding: 20px;
 }
 
+a:hover{
+color: var(--second)}
 
 div {
 font-size: 100%;
@@ -86,6 +100,10 @@ pdf-viewer {
 width: "500px";
 height: "600px";}
 
+.fa {
+color: var(--main-colour)}
+.fa:hover {
+color: var(--second)}
 
 @media screen and (max-width: 600px) {
   section {
