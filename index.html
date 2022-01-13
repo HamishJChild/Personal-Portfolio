@@ -63,26 +63,85 @@
     </script>
 
     <script>
-    window.onscroll = function() {myFunction()};
+    document.addEventListener('DOMContentLoaded', function() {
+    (function() {
+      let mainNavLinks = document.querySelectorAll("#sidebar-nav ul a");
+      let mainSections = document.querySelectorAll("main > section");
 
-    var navbar = document.getElementById("navbar");
-    console.log('I will sleep soon promise');
-    var sticky = navbar.offsetTop;
-
-    function myFunction() {
-      if (window.pageYOffset >= sticky) {
-        console.log('I will sleep soon');
-        navbar.classList.add("sticky")
-
-      } else {
-        console.log('I will sleep soon');
-        navbar.classList.remove("sticky");
+      function init() {
+        doSmoothScrolling();
+        //doActiveNav();
+        doMobileSidebar();
       }
-    }
-</script>
+
+      function doSmoothScrolling() {
+        mainNavLinks.forEach(link => {
+          link.addEventListener("click", event => {
+            event.preventDefault();
+            let target = document.querySelector(event.target.hash);
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          });
+        });
+      }
+
+      function doActiveNav() {
+        let lastId;
+        let cur = [];
+
+        // This should probably be throttled.
+        // Especially because it triggers during smooth scrolling.
+
+        window.addEventListener("scroll", event => {
+          let fromTop = window.scrollY;
+          mainNavLinks.forEach(link => {
+            console.log(link);
+            let header = document.querySelector(link.hash);
+            let section = header.parentElement;
+
+            console.log("offsetTop", section.offsetTop)
+            console.log("fromTop", fromTop)
+            console.log("offsetHeight", section.offsetHeight)
+            if (
+              section.offsetTop <= fromTop &&
+              section.offsetTop + section.offsetHeight > fromTop
+            ) {
+              link.classList.add("current");
+            } else {
+              link.classList.remove("current");
+            }
+
+          });
+        });
+      }
+
+      function doMobileSidebar() {
+        let hamburgerButton = document.querySelector("#hamburger");
+        // let sidebarNav = document.querySelector("#sidebar-nav");
+        hamburgerButton.addEventListener("click", event => {
+          event.preventDefault;
+          if (document.body.classList.contains("sidebar-is-open")) {
+            // document.body.style.removeProperty("width");
+            document.body.classList.remove("sidebar-is-open");
+          } else {
+            // document.body.style.width = window.outerWidth + "px";
+            document.body.classList.add("sidebar-is-open");
+          }
+        })
+      }
+
+      init();
+    })();
+    })
+    </script>
     <title>Hamish Child | Personal Portfolio</title>
 </head>
-<body>
+<body id="top">
+
+
+  <button id="hamburger">☰</button>
 
     <!-- Header -->
     <div class="header">
@@ -91,18 +150,23 @@
         <hr style="margin-top: 30px">
     </div>
 
+
     <!-- Nav Bar -->
-    <div id="navbar" class="navbar navbar-top" role="navigation">
-        <div class="navbar-inner">
-            <a class="nav-item mx-5" href="#personal-statement">Home</a>
-            <a class="nav-item mx-5" href="#projects">Projects</a>
-            <a class="nav-item mx-5" href="#cv">CV</a>
-            <a class="nav-item mx-5" href="#contact">Contact</a>
+    <nav id="sidebar-nav" class="sidebar-nav" role="navigation">
+        <div class="sticky-inside">
+            <div class="just-nav">
+                <ul>
+                    <li><a class="nav-item mx-5" href="#top">Home</a></li>
+                    <li><a class="nav-item mx-5" href="#projects">Projects</a></li>
+                    <li><a class="nav-item mx-5" href="#cv">CV</a></li>
+                    <li><a class="nav-item mx-5" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 
+    <main>
     <br>
-
     <!-- Personal Statement-->
     <section id="personal-statement">
         <div>
@@ -134,15 +198,17 @@
 
     <!--CV-->
     <hr style="margin-top: 30px; margin-bottom: 30px;">
-    <section id="cv" style="width: 100%; text-align:center; margin: auto; height: 100%">
+    <section id="cv" style="width: 100%; text-align:center; margin: auto;">
         <h3>CV</h3>
-            <object data= "images/Hamish_Child_CV_2022_no_contacts.pdf" style="width: 80%; height: 800px;" type="application/pdf">
-                <a href="images/Hamish_Child_CV_2022_no_contacts.pdf">Click here to download my CV.</a>
-            </object>
-        </section>
+        <object data= "images/Hamish_Child_CV_2022_no_contacts.pdf" style="width: 80%; height: 800px;" type="application/pdf">
+            <a href="images/Hamish_Child_CV_2022_no_contacts.pdf">Click here to download my CV.</a>
+        </object>
+    </section>
+    </main>
+
 
     <!-- Footer -->
-    <footer id="contact" class="w3-container w3-padding-64 w3-center w3-xlarge" >
+    <footer id="contact" >
         <div>
             <a href="https://github.com/HamishJChild" target="_blank" style="font-size: xxx-large"><i class="fa fa-github" ></i></a>
             <a href="https://www.linkedin.com/in/hamish-c-32889b81/" target="_blank" style="font-size: xxx-large"><i class="fa fa-linkedin"></i></a>

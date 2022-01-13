@@ -27,30 +27,83 @@ Baby Blue
 --cultured: #f2f2f2;
 --second: #52ab98;
 }
-
-body {
+html, body {
 font-family:  "Courier New", monospace;
-background: var(--white);
+height: 100%;
+}
+body {
+  background: var(--white);
+  min-height: 100%;
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content 1fr;
+  grid-template-columns: min-content 1fr;
+  -ms-grid-rows: min-content auto min-content;
+  grid-template-rows: min-content auto min-content;
+}
+
+
+main {
+  grid-area: 2 / 2 / 3 / 3;
+  padding: 0 2rem 10rem 2rem;
 }
 
 /* Header/Logo Title */
 .header {
-  padding: 80px;
+  grid-area: 1 / 2 / 2 / 3;
+  padding: 100px;
   text-align: center;
   background: var(--main-colour);
   color: white;
   font-size: 30px;
   font-family: "Courier New", monospace;
 }
+
+footer {
+  grid-area: 3/2/4/4;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+}
+
+@media (max-width: 700px) {
+  .footer {
+    display: block;
+    padding-bottom: 2rem;
+  }
+  .footer>div {
+    padding: 2rem 1rem 0rem 2rem;
+  }
+}
+
+
+#hamburger {
+  background: none;
+  border: 0;
+  color: var(--second);
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 150%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  #hamburger {
+    display: block;
+  }
+}
 /* Font change */
-h1 {
-font-family: "Courier New", monospace;
-}
-h2 {
-font-family: "Courier New", monospace;
-}
-h3 {
-font-family: "Courier New", monospace;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {font-family: "Courier New", monospace;
 }
 
 hr {
@@ -63,39 +116,70 @@ hr:not([size]) {
     height: 3px;
 }
 
-.navbar-inner{
-    text-align: center;
-    margin: auto;
-}
-.navbar{
-    overflow: hidden;
-    font-size: x-large;
-    border: solid var(--main-colour);
+ul {
+list-style: none;}
+
+/* Navigation Bar Style */
+.sidebar-nav {
+  grid-area: 1 / 1 / 4 / 1;
+  padding: 0 0 2rem 0;
+  position: relative;
+  z-index: 1;
+  background-color: var(--main-colour)
 }
 
-.navbar a {
-  float: left;
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav ul li a {
   display: block;
-  text-align: center;
+  padding: 0.25rem 1rem;
+  color: var(--white);
+  font-size: 20px;
   text-decoration: none;
 }
 
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+.sidebar-nav ul li a:focus,
+.sidebar-nav ul li a:hover {
+  color: var(--second);
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 60px;
+.sidebar-nav ul li a.current {
+  background: black;
 }
 
-.column {
-  float: left;
-  width: 49%;
-  padding: 20px;
+.sidebar-nav .sticky-inside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+}
+
+.sidebar-nav .just-nav {
+  white-space: nowrap;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar-nav .just-nav {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    display: block;
+    padding-top: 1.25rem;
+    transition: 0.2s;
+    transform: translateX(-210px);
+    background: rgba(0, 0, 0, 0.9);
+  }
+  body.sidebar-is-open .sidebar-nav .just-nav {
+    transform: translateX(0);
+  }
 }
 
 a:hover{
@@ -106,9 +190,10 @@ font-size: 100%;
 }
 
 section {
-width: 50%;
+width: 70%;
 text-align:center;
 margin: auto;
+padding: 10px;
 }
 list-section {
 width: 15%;
@@ -134,4 +219,7 @@ color: var(--second)}
   padding:20px;}
   pdf-viewer {
   width: 100%}
+  nav ul {
+  position: sticky;
+  top: 0;}
 }
